@@ -44,7 +44,7 @@ namespace Exercicio01.Entities
                 default:
                     Console.WriteLine();
                     Console.WriteLine("Opção inválida");
-                    return;
+                    break;
             }
             Console.WriteLine("Pressione [Enter] para continuar");
             Console.ReadLine();
