@@ -13,10 +13,7 @@ public class Program
         menu.MenuStatus = true;
         while (menu.MenuStatus)
         {
-            menu.ExibirMenu();
-
-            Console.WriteLine("Pressione [Enter] para continuar");
-            Console.ReadLine();
+            menu.ExibirMenu();                       
         }
 
         Console.WriteLine("Programa encerrado.");

@@ -31,11 +31,11 @@ namespace Exercicio01.Entities
 
                 case "2":
                     Cadastro.BuscarCliente(); // COM BUG
-                    return;
+                    break;
 
                 case "3":
                     Cadastro.ListarClientes(Clientes);
-                    return;
+                    break;
 
                 case "4":
                     MenuStatus = false;
@@ -46,6 +46,8 @@ namespace Exercicio01.Entities
                     Console.WriteLine("Opção inválida");
                     return;
             }
+            Console.WriteLine("Pressione [Enter] para continuar");
+            Console.ReadLine();
         }
     }
 }
