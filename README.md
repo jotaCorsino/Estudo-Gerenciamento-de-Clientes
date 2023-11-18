@@ -41,3 +41,7 @@ A tabela abaixo apresenta exemplos com alguns dados de entrada e suas respectiva
 | rafa@dio.com | Nome: Rafa|
 | 555000 | E-mail: rafa@dio.com |
 | | Tel: 555000|
+
+### Maiores desafios
+---
+Os maiores desafios estão sendo criar os métodos para tratar os dados de entrada como nome, email e telefone.
