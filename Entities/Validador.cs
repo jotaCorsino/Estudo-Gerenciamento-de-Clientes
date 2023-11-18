@@ -14,6 +14,7 @@ namespace Exercicio01.Entities
             {
                 return false;
             }
+
             //if (StringExiste(readline)) BUG para analisar
             //{
             //    return false;
@@ -60,17 +61,18 @@ namespace Exercicio01.Entities
             return false;
         }
 
-
         public static bool EmailEhValido(string email)
         {
             if (!StringEhValida(email))
             {
                 return false;
             }
+
             // if (Email.Contains(email)) BUG para analisar
             // {
             //     return false;
             // }
+
             if (!email.Contains('@'))
             {
                 return false;
@@ -178,7 +180,6 @@ namespace Exercicio01.Entities
 
         public static bool TelefoneEhValido(string telefone)
         {
-
             if (!StringEhValida(telefone))
             {
                 return false;

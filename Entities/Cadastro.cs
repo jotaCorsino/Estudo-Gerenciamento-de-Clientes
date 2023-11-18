@@ -10,8 +10,6 @@ namespace Exercicio01.Entities
 {
     internal class Cadastro : Validador
     {
-
-
         static List<Cliente> Clientes = new List<Cliente>();
         public static int novoId = ObterNumerosDeClientes() + 1;
 
@@ -139,6 +137,7 @@ namespace Exercicio01.Entities
                 }
             }
         }
+
         public static void BuscarClienteId(List<Cliente> Clientes)
         {
             Console.Clear();

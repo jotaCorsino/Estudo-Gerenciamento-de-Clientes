@@ -19,8 +19,8 @@ namespace Exercicio01.Entities
             Console.WriteLine("2 - Buscar cliente");
             Console.WriteLine("3 - listar clientes");
             Console.WriteLine("4 - Encerrar");
-            Console.Write("Digite a sua opção: ");
 
+            Console.Write("Digite a sua opção: ");
             string opcaoMenu = Console.ReadLine();
 
             switch (opcaoMenu)
