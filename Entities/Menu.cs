@@ -10,7 +10,6 @@ namespace Exercicio01.Entities
     {
         public bool MenuStatus { get; set; }
 
-        List<Cliente> Clientes = new List<Cliente>();
         public void ExibirMenu()
         {
             Console.Clear();
@@ -26,7 +25,7 @@ namespace Exercicio01.Entities
             switch (opcaoMenu)
             {
                 case "1":
-                    Cadastro.CadastrarCliente(Clientes);
+                    Cadastro.CadastrarCliente();
                     break;
 
                 case "2":
@@ -34,7 +33,7 @@ namespace Exercicio01.Entities
                     break;
 
                 case "3":
-                    Cadastro.ListarClientes(Clientes);
+                    Cadastro.ListarClientes();
                     break;
 
                 case "4":

@@ -23,7 +23,7 @@ namespace Exercicio01.Entities
             return novoId++;
         }
 
-        public static void CadastrarCliente(List<Cliente> Clientes)
+        public static void CadastrarCliente()
         {
             Cliente cliente = new Cliente();
 
@@ -98,13 +98,34 @@ namespace Exercicio01.Entities
 
         public static void RemoverCliente(Cliente cliente)
         {
-            Clientes.Remove(cliente);
+            Console.WriteLine();
+            Console.WriteLine($"Tem certeza que deseja apagar os dados de {cliente.Nome}?");
+            Console.WriteLine("Uma vez apagados, não será possível recupera-los pois os dados serão apagados permanentemente do sistema.");
+
+            bool confirmacaoRemover = true;
+            while (confirmacaoRemover)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Digite REMOVER CLIENTE para remove-lo do sistema:");
+                string removerCLiente = Console.ReadLine();
+
+                if (removerCLiente == "REMOVER CLIENTE".ToUpper())
+                {
+                    Clientes.Remove(cliente);
+                    Console.WriteLine("Os dados do cliente foram apagados com sucesso!");
+                    confirmacaoRemover = false;
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine("Confirmação inválida!");
+                    break;
+                }
+            }
         }
 
         public static void BuscarCliente()
         {
-            string opcaoMenuBuscador;
-
             bool exibirMenuBuscadorDeCliente = true;
             while (exibirMenuBuscadorDeCliente)
             {
@@ -115,17 +136,17 @@ namespace Exercicio01.Entities
                 Console.WriteLine("3 - Voltar ao menu");
                 Console.Write("Digite a sua opção: ");
 
-                opcaoMenuBuscador = Console.ReadLine();
+                string opcaoMenuBuscador = Console.ReadLine();
 
                 switch (opcaoMenuBuscador)
                 {
                     case "1":
-                        BuscarClienteId(Clientes);
-                        break;
+                        BuscarClienteId();
+                        return;
 
                     case "2":
-                        BuscarClienteNome(Clientes);
-                        break;
+                        BuscarClienteNome();
+                        return;
 
                     case "3":
                         exibirMenuBuscadorDeCliente = false;
@@ -138,79 +159,73 @@ namespace Exercicio01.Entities
             }
         }
 
-        public static void BuscarClienteId(List<Cliente> Clientes)
+        public static void BuscarClienteId()
         {
             Console.Clear();
             Console.WriteLine("Digite o numero ID do cliente:");
 
             if (int.TryParse(Console.ReadLine(), out int inputId))
             {
-                Cliente cliente = Clientes.Find(c => c.Id == inputId);
+                Console.Clear();
+                Console.WriteLine("Digite o id cliente:");
 
-                if (cliente != null)
+                for (int i = 0; i < Clientes.Count; i++)
                 {
-                    cliente.ToString();
-                    Console.WriteLine();
-                    MenuControleCliente(cliente);
+                    if (Clientes[i].Id == inputId)
+                    {
+                        Console.WriteLine(Clientes[i].ToString());
+                        MenuControleCliente(Clientes[i]);
+                        return;
+                    }
                 }
-                else
-                {
-                    Console.WriteLine($"Cliente {inputId} não encontrado na lista de clientes.");
-                    Console.WriteLine("Pressione [Enter] para continuar");
-                    Console.ReadLine();
-                    return;
-                }
+            }
+            else
+            {
+                Console.WriteLine($"{inputId} não encontrado na lista de clientes.");
             }
         }
 
-        public static void BuscarClienteNome(List<Cliente> Clientes)
+        public static void BuscarClienteNome()
         {
             Console.Clear();
             Console.WriteLine("Digite o nome cliente:");
             string inputNome = Console.ReadLine();
 
-            Cliente? cliente = Clientes.Find(c => c.Nome == inputNome);
+            for (int i = 0; i < Clientes.Count; i++)
+            {
+                if (Clientes[i].Nome == inputNome)
+                {
+                    Console.WriteLine(Clientes[i].ToString());
+                    MenuControleCliente(Clientes[i]);
+                    return;
+                }
+            }
+            Console.WriteLine($"{inputNome} não encontrado na lista de clientes.");
 
-            if (cliente != null)
-            {
-                cliente.ToString();
-                Console.WriteLine();
-                MenuControleCliente(cliente);
-            }
-            else
-            {
-                Console.WriteLine($"{inputNome} não encontrado na lista de clientes.");
-                Console.WriteLine("Pressione [Enter] para continuar");
-                Console.ReadLine();
-                return;
-            }
         }
 
         public static void MenuControleCliente(Cliente cliente)
         {
-            Console.WriteLine();
-            Console.WriteLine("Menu do cliente:");
-            Console.WriteLine("1 - Editar Cliente");
-            Console.WriteLine("2 - Remover Cliente");
-            Console.WriteLine("3 - Voltar ao menu");
-            Console.Write("Digite a sua opção: ");
-
-            string opcaoMenuCliente;
-
             bool exibirMenuBuscadorDeCliente = true;
             while (exibirMenuBuscadorDeCliente)
             {
-                opcaoMenuCliente = Console.ReadLine();
+                Console.WriteLine();
+                Console.WriteLine("Opções:");
+                Console.WriteLine("1 - Editar Cliente");
+                Console.WriteLine("2 - Remover Cliente");
+                Console.WriteLine("3 - Voltar ao menu");
+                Console.Write("Digite a sua opção: ");
+                string opcaoMenuCliente = Console.ReadLine();
 
                 switch (opcaoMenuCliente)
                 {
                     case "1":
                         EditarCliente(cliente);
-                        break;
+                        return;
 
                     case "2":
                         RemoverCliente(cliente);
-                        break;
+                        return;
 
                     case "3":
                         exibirMenuBuscadorDeCliente = false;
@@ -223,7 +238,7 @@ namespace Exercicio01.Entities
             }
         }
 
-        public static void ListarClientes(List<Cliente> Clientes)
+        public static void ListarClientes()
         {
             Console.WriteLine();
             Console.WriteLine("Lista de clientes:");
@@ -306,7 +321,7 @@ namespace Exercicio01.Entities
                     }
                 }
 
-                Console.WriteLine($"Cliente {cliente} editado com sucesso.");
+                Console.WriteLine($"Cliente {cliente.Nome} editado com sucesso.");
                 Console.WriteLine();
                 Console.WriteLine(cliente.ToString());
                 exibirMenuEditar = false;
